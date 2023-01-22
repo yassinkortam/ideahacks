@@ -27,11 +27,9 @@ void loop() {
 
     /* Generate an InsertOne Payload*/
   DynamicJsonDocument payload (1024);
-  payload["collection"] = "user-stats";
-  payload["database"] = "ideahacks";
-  payload["dataSource"] = "AtlasCluster";
-  payload["document"]["_id"] = "62cc3b7d0cdd2b2c8dee4434";
-  payload["document"]["name"] = "Nathan";
+  
+  payload["document"]["steps"] = 1;
+  payload["document"]["reuse"] = 1;
   payload["document"]["accel"] = arrayToString();
   payload["document"]["gyro"] = arrayToString();
 

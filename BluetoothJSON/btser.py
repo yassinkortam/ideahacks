@@ -1,7 +1,7 @@
 import serial
 import json
 
-ser = serial.Serial('COM7', baudrate=115200, timeout=1)
+ser = serial.Serial('/dev/tty.NathanESP', baudrate=115200, timeout=1)
 while True:
     data = ser.readall().decode()
     print(data)
