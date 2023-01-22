@@ -148,14 +148,14 @@ void loop() {
   
   payload["document"]["steps"] = step_count;
   payload["document"]["reuse"] = reuse_count;
-  arrayToString(accelx_data) != NULL ? payload["document"]["accelx"] = arrayToString(accelx_data) : payload["document"]["accelx"] = "[]";
-  arrayToString(accely_data) != NULL ? payload["document"]["accely"] = arrayToString(accely_data) : payload["document"]["accely"] = "[]";
-  arrayToString(accelz_data) != NULL ? payload["document"]["accelz"] = arrayToString(accelz_data) : payload["document"]["accelz"] = "[]";
-  arrayToString(gyrox_data) != NULL ? payload["document"]["gyrox"] = arrayToString(gyrox_data) : payload["document"]["gyrox"] = "[]";
-  arrayToString(gyroy_data) != NULL ? payload["document"]["gyroy"] = arrayToString(gyroy_data) : payload["document"]["gyroy"] = "[]";
-  arrayToString(gyroz_data) != NULL ? payload["document"]["gyroz"] = arrayToString(gyroz_data) : payload["document"]["gyroz"] = "[]";
+  arrayToString(accelx_data).length() > 0 ? payload["document"]["accelx"] = arrayToString(accelx_data) : payload["document"]["accelx"] = "[]";
+  arrayToString(accely_data).length() > 0 ? payload["document"]["accely"] = arrayToString(accely_data) : payload["document"]["accely"] = "[]";
+  arrayToString(accelz_data).length() > 0 ? payload["document"]["accelz"] = arrayToString(accelz_data) : payload["document"]["accelz"] = "[]";
+  arrayToString(gyrox_data).length() > 0 ? payload["document"]["gyrox"] = arrayToString(gyrox_data) : payload["document"]["gyrox"] = "[]";
+  arrayToString(gyroy_data).length() > 0 ? payload["document"]["gyroy"] = arrayToString(gyroy_data) : payload["document"]["gyroy"] = "[]";
+  arrayToString(gyroz_data).length() > 0 ? payload["document"]["gyroz"] = arrayToString(gyroz_data) : payload["document"]["gyroz"] = "[]";
 
-  String JSONText;
+  String JSONText = "";
   size_t JSONlength = serializeJson(payload, JSONText);
 
   for (int i = 0; i < JSONText.length(); i++)
