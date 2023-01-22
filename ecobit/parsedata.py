@@ -7,8 +7,11 @@ def parseData(ser):
     raw = ser.readall().decode()
     print(raw)
     if raw and raw[0] == '{':
-        deserialized = json.loads(raw)
-        data = deserialized
+        try:
+            deserialized = json.loads(raw)
+        except:
+            return {}
+        data = deserialized["document"]
         return data
     return {}
        

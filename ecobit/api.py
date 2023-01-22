@@ -83,7 +83,7 @@ def update(setup, data, current_state):
         "update": {
             "$set": {
               "steps": data["steps"] + current_state["steps"],
-              "reuse": data["steps"] + current_state["steps"]
+              "reuse": data["reuse"] + current_state["steps"]
             }
         }
     })

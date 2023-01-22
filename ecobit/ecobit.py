@@ -21,14 +21,15 @@ ser = serial.Serial('/dev/tty.'+setup["device_name"], baudrate=115200, timeout=1
 while(True):
     data = parseData(ser)
     if data:
+        data["reuse"] /= 10
         #Read the current state of the data
         current_state = find(setup)
         if not current_state:
             insert(setup, data)
-            print("No history")
             continue
         #Increment the data
         update(setup, data, current_state)
+        print("success")
     else:
         print("No data")
         

@@ -20,7 +20,7 @@ export function Steps({ user }){
     const data = [
       {
         name: 'Goal', 
-        value: 100, 
+        value: 1000, 
         fill: '#FAFAFA'
       },
       {
