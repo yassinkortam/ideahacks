@@ -25,7 +25,10 @@ while(True):
         current_state = find(setup)
         if not current_state:
             insert(setup, data)
+            print("No history")
             continue
         #Increment the data
         update(setup, data, current_state)
+    else:
+        print("No data")
         

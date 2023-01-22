@@ -93,7 +93,6 @@ void setup() {
   }
 }
 
-
 String arrayToString(float a[]){
   String myarray = "[";
   for (int i=0; i<50; i++){
@@ -147,14 +146,14 @@ void loop() {
   /* Generate an InsertOne Payload*/
   DynamicJsonDocument payload (1024);
   
-  payload["document"]["steps"] = 1;
-  payload["document"]["reuse"] = 1;
-  payload["document"]["accelx"] = arrayToString(gyrox_data);
-  payload["document"]["accely"] = arrayToString(gyroy_data);
-  payload["document"]["accelz"] = arrayToString(gyroz_data);
-  payload["document"]["gyrox"] = arrayToString(accelx_data);
-  payload["document"]["gyroy"] = arrayToString(accely_data);
-  payload["document"]["gyroz"] = arrayToString(accelz_data);
+  payload["document"]["steps"] = step_count;
+  payload["document"]["reuse"] = reuse_count;
+  accelx_data ? payload["document"]["accelx"] = arrayToString(accelx_data) : payload["document"]["accelx"] = "[]";
+  accely_data ? payload["document"]["accely"] = arrayToString(accely_data) : payload["document"]["accely"] = "[]";
+  accelz_data ? payload["document"]["accelz"] = arrayToString(accelz_data) : payload["document"]["accelz"] = "[]";
+  gyrox_data ? payload["document"]["gyrox"] = arrayToString(gyrox_data) : payload["document"]["gyrox"] = "[]";
+  gyroy_data ? payload["document"]["gyroy"] = arrayToString(gyroy_data) : payload["document"]["gyroy"] = "[]";
+  gyroz_data ? payload["document"]["gyroz"] = arrayToString(gyroz_data) : payload["document"]["gyroz"] = "[]";
 
   String JSONText;
   size_t JSONlength = serializeJson(payload, JSONText);
