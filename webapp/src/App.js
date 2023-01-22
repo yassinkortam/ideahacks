@@ -1,33 +1,28 @@
-import React from 'react';
-import * as Realm from "realm-web";
-import Steps from "./components/Steps.js";
-
-// Add your App ID
-const app = new Realm.App({ id: "data-wpsdz" });
-
-// Create a component that lets an anonymous user log in
-function Login({ setUser }) {
-  const loginAnonymous = async () => {
-    const user = await app.logIn(Realm.Credentials.anonymous());
-    setUser(user);
-  };
-  return <button onClick={loginAnonymous}>Log In</button>;
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserProvider } from "./contexts/user.context";
+import Home from "./pages/Home.page";
+import Login from "./pages/Login.page";
+import PrivateRoute from "./pages/PrivateRoute.page";
+import Signup from "./pages/Signup.page";
+ 
+function App() {
+ return (
+   <BrowserRouter>
+     {/* We are wrapping our whole app with UserProvider so that */}
+     {/* our user is accessible through out the app from any page*/}
+     <UserProvider>
+       <Routes>
+         <Route exact path="/login" element={<Login />} />
+         <Route exact path="/signup" element={<Signup />} />
+         {/* We are protecting our Home Page from unauthenticated */}
+         {/* users by wrapping it with PrivateRoute here. */}
+         <Route element={<PrivateRoute />}>
+           <Route exact path="/" element={<Home />} />
+         </Route>
+       </Routes>
+     </UserProvider>
+   </BrowserRouter>
+ );
 }
-
-const App = () => {
-  // Keep the logged in Realm user in local state. This lets the app re-render
-  // whenever the current user changes (e.g. logs in or logs out).
-  const [user, setUser] = React.useState(app.currentUser);
-  console.log('User', user)
-
-  // If a user is logged in, show their details.
-  // Otherwise, show the login screen.
-  return (
-    <div className="App">
-      <div className="App-header">
-        {user ? <Steps user={user} /> : <Login setUser={setUser} />}
-      </div>
-    </div>
-  );
-};
+ 
 export default App;

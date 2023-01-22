@@ -3,7 +3,7 @@ import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 import "./Steps.css";
 
 // Create a component that displays the given user's details
-export default function Steps({ user }){
+export function Steps({ user }){
     const [result, setResult] = useState(
       {
        "steps":0
@@ -12,15 +12,11 @@ export default function Steps({ user }){
   
     useEffect(() => {
       async function getData(){
-        const result = await user.functions.getStats("63cc3b7d0cdd2b2c8dee4435");
-        console.log(user.id)
+        const result = await user.functions.getStats(user._profile.data.email);
         setResult(result)
       }
       getData();
     });
-
-    console.log(result)
-
     const data = [
       {
         name: 'Goal', 
@@ -39,9 +35,9 @@ export default function Steps({ user }){
         <h1 className="steps"> {result["steps"]} steps </h1>
           <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart cx="50%" cy="50%" innerRadius="50%" outerRadius="50%" barSize={5} data={data}>
-              <RadialBar minAngle={15} background clockWise dataKey="value" />
-            </RadialBarChart>
-          </ResponsiveContainer>
-        r</div>
+            <RadialBar minAngle={15} background clockWise dataKey="value" />
+          </RadialBarChart>
+        </ResponsiveContainer>
+      </div>
     );
 }
