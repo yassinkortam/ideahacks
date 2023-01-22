@@ -37,6 +37,7 @@ void loop() {
 
   String JSONText;
   size_t JSONlength = serializeJson(payload, JSONText);
+  JSONText = "START" + JSONTEXT + "END";
 
   for (int i = 0; i < JSONText.length(); i++)
     SerialBT.write(JSONText.charAt(i));
