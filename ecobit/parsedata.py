@@ -9,7 +9,7 @@ def parseData(ser):
         deserialized = json.loads(raw)
         data = deserialized["document"]
         return data
-    return
+    return {}
        
         
         
