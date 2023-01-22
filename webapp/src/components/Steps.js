@@ -36,7 +36,7 @@ export default function Steps({ user }){
 
     return (
       <div className="step-counter">
-        <h1 className="steps"> {result["steps"]} </h1>
+        <h1 className="steps"> {result["steps"]} steps </h1>
           <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart cx="50%" cy="50%" innerRadius="50%" outerRadius="50%" barSize={5} data={data}>
               <RadialBar minAngle={15} background clockWise dataKey="value" />
