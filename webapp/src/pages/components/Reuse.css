@@ -1,9 +1,9 @@
-.step-counter{
+.reuse-container{
     margin:auto;
     width: 100%;
     height:50vh;
 }
-.steps{
+.reuse{
     text-align: center;
     font-family: Sans-serif;
     font-weight:lighter;

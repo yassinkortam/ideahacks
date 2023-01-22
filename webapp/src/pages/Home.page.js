@@ -2,6 +2,8 @@ import { Button } from '@mui/material'
 import { useContext } from 'react';
 import { UserContext } from '../contexts/user.context';
 import { Steps } from './components/Steps.js';
+import { Reuse } from './components/Reuse.js';
+import './Home.page.css'
  
 export default function Home() {
  const { logOutUser } = useContext(UserContext);
@@ -23,10 +25,23 @@ export default function Home() {
  }
  
 return (
-    <div>
-        <h1>Hi,  {user._profile.data.email}</h1>
-        <Steps user={user}/>
-        <Button variant="contained" onClick={console.log(user)}>Logout</Button>
+    <div className='body'>
+      <div className='navbar'>
+          <h2 className='welcome'>
+            {user._profile.data.email}
+            <Button className='logout'  onClick={logOut}>Logout</Button>
+          </h2>
+      </div>
+      <table className='data'>
+        <tr>
+          <th className='row'>
+          <Steps user={user}/>
+          </th>
+          <th className='row'>
+          <Reuse user={user}/>
+          </th>
+        </tr>
+      </table>
     </div>
  )
 }

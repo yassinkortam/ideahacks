@@ -20,21 +20,21 @@ export function Steps({ user }){
     const data = [
       {
         name: 'Goal', 
-        value: 10000, 
+        value: 100, 
         fill: '#FAFAFA'
       },
       {
         name: 'Steps', 
         value: result["steps"], 
-        fill: '#000080'
+        fill: '#90EE90'
       }
     ];
 
     return (
       <div className="step-counter">
-        <h1 className="steps"> {result["steps"]} steps </h1>
+        <h1 className="steps"> {result["steps"]} Steps </h1>
           <ResponsiveContainer width="100%" height="100%">
-            <RadialBarChart cx="50%" cy="50%" innerRadius="50%" outerRadius="50%" barSize={5} data={data}>
+            <RadialBarChart cx="50%" cy="50%" innerRadius="50%" outerRadius="50%" barSize={40} data={data}>
             <RadialBar minAngle={15} background clockWise dataKey="value" />
           </RadialBarChart>
         </ResponsiveContainer>

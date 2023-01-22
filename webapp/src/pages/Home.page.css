@@ -1,0 +1,30 @@
+/* Style the navbar */
+.navbar {
+    overflow: hidden;
+}
+  
+/* Navbar links */
+.navbar a {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px;
+text-decoration: none;
+}
+
+/* Page content */
+.content {
+padding: 16px;
+}
+
+.welcome {
+    text-align: center;
+}
+.data{
+    height: 80vh;
+    width : 100%;
+}
+.row{
+    width : 50%
+}
