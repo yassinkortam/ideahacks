@@ -10,6 +10,16 @@ void setup() {
     Serial.println("An error occurred initializing Bluetooth");
   }
 }
+
+String arrayToString(){
+  String myarray = "[";
+  for (int i=0; i<100; i++){
+    myarray += String(random(-10,10));
+    myarray += ",";
+  }
+  myarray[myarray.length() - 1] = "]";
+  return myarray;
+}
  
 void loop() {
 
@@ -22,8 +32,8 @@ void loop() {
   payload["dataSource"] = "AtlasCluster";
   payload["document"]["_id"] = "62cc3b7d0cdd2b2c8dee4434";
   payload["document"]["name"] = "Nathan";
-  payload["document"]["steps"] = 4;
-  payload["document"]["reuse"] = 1000;
+  payload["document"]["accel"] = arrayToString();
+  payload["document"]["gyro"] = arrayToString();
 
   String JSONText;
   size_t JSONlength = serializeJson(payload, JSONText);
