@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
-import "./Steps.css"
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
+import "./Steps.css";
 
 // Create a component that displays the given user's details
 export default function Steps({ user }){
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState(
+      {
+       "steps":0
+      }
+    );
   
     useEffect(() => {
       async function getData(){
@@ -17,33 +21,27 @@ export default function Steps({ user }){
 
     console.log(result)
 
-    const style = {
-      top: '50%',
-      right: 0,
-      transform: 'translate(0, -50%)',
-      lineHeight: '24px',
-    };
-
-    const data = [{
-        name: 'score', 
-        value: 1000, 
-        fill: '#FFD700'
-    },];
+    const data = [
+      {
+        name: 'Goal', 
+        value: 10000, 
+        fill: '#FAFAFA'
+      },
+      {
+        name: 'Steps', 
+        value: result["steps"], 
+        fill: '#000080'
+      }
+    ];
 
     return (
-      <div classname="step-counter">
-        <h1 classname="test">test</h1>
-        <ResponsiveContainer width="100%" height="100%">
-          <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
-            <RadialBar
-              minAngle={15}
-              background
-              clockWise
-              dataKey="value"
-            />
-            <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-          </RadialBarChart>
-        </ResponsiveContainer>
-      </div>
+      <div className="step-counter">
+        <h1 className="steps"> {result["steps"]} </h1>
+          <ResponsiveContainer width="100%" height="100%">
+            <RadialBarChart cx="50%" cy="50%" innerRadius="50%" outerRadius="50%" barSize={5} data={data}>
+              <RadialBar minAngle={15} background clockWise dataKey="value" />
+            </RadialBarChart>
+          </ResponsiveContainer>
+        r</div>
     );
 }
